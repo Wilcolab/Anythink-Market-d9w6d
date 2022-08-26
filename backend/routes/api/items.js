@@ -1,3 +1,5 @@
+import placeholder from './imgs/placeholder.png'
+
 var router = require("express").Router();
 var mongoose = require("mongoose");
 var Item = mongoose.model("Item");
@@ -5,6 +7,7 @@ var Comment = mongoose.model("Comment");
 var User = mongoose.model("User");
 var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
+
 
 // Preload item objects on routes with ':item'
 router.param("item", function(req, res, next, slug) {
@@ -184,6 +187,8 @@ router.put("/:item", auth.required, function(req, res, next) {
 
       if (typeof req.body.item.image !== "undefined") {
         req.item.image = req.body.item.image;
+      } else {
+        req.item.image = placeholder;
       }
 
       if (typeof req.body.item.tagList !== "undefined") {
