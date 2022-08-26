@@ -8,7 +8,7 @@ import {
   ITEM_PAGE_LOADED,
   ITEM_PAGE_UNLOADED,
 } from "../../constants/actionTypes";
-import placeholder from './placeholder.png';
+import placeholder from "./placeholder.png";
 
 const mapStateToProps = (state) => ({
   ...state.item,
@@ -45,7 +45,9 @@ class Item extends React.Component {
     const canModify =
       this.props.currentUser &&
       this.props.currentUser.username === this.props.item.seller.username;
-    const itemImage = this.props.item.image ? this.props.item.image : placeholder
+    const itemImage = this.props.item.image
+      ? this.props.item.image
+      : placeholder;
     return (
       <div className="container page">
         <div className="text-dark">
